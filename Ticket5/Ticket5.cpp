@@ -111,14 +111,10 @@ int** Generated_Array(int& n) {
 int Index_of_max_col(int** array, int n) {
     int ind = 0;
     int max = array[0][0];
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            if (array[i][j] == max && j >= ind) {       // тут обираю крайній стовпець (не обов'язково, але може так і треба)
-                max = array[i][j];
-                ind = j;
-            }
-            else if (array[i][j] > max) {
-                max = array[i][j];
+    for (int j = 0; j < n; j++) {
+        for (int i = 0; i < n; i++) {       // прохожусь по стовпцям а не рядкам щоб
+            if (array[i][j] >= max) {       // знайвлося декілька максимальних елементів
+                max = array[i][j];          // обрався останній стовпець з таким елементои
                 ind = j;
             }
         }
